@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Pregnancy Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="pregnant.png" />
+</head>
+<body class="pink-bg">
+  <header class="container center">
+    <img src="pregnant.png" alt="Pregnant woman" class="hero-img" />
+    <h1>Pregnancy Tracker</h1>
+    <p class="subtitle">Track your baby's growth and get weekly guidance</p>
+  </header>
+
+  <main class="container card">
+    <form id="start-form" action="development.html" method="get" novalidate>
+      <fieldset class="fieldset">
+        <legend>Choose input type</legend>
+        <label class="radio">
+          <input type="radio" name="mode" value="lmp" checked />
+          Last Menstrual Period (LMP)
+        </label>
+        <label class="radio">
+          <input type="radio" name="mode" value="conception" />
+          Conception Date
+        </label>
+      </fieldset>
+
+      <div class="grid-2">
+        <label class="stack">
+          <span id="date-label">LMP date</span>
+          <input type="date" name="date" id="date-input" required />
+        </label>
+
+        <label class="stack">
+          <span>Average cycle length (optional)</span>
+          <input type="number" name="cycle" min="20" max="45" placeholder="28" id="cycle-input" />
+        </label>
+      </div>
+
+      <div class="grid-2 mt-2">
+        <label class="stack">
+          <span>Language</span>
+          <select id="lang">
+            <option value="en" selected>English</option>
+            <option value="es">Español</option>
+          </select>
+        </label>
+
+        <label class="stack">
+          <span>Units</span>
+          <select id="unit">
+            <option value="cm" selected>cm</option>
+            <option value="in">in</option>
+          </select>
+        </label>
+      </div>
+
+      <button class="btn mt-2" type="submit">Show Baby Development</button>
+
+      <p class="tiny mt-1">
+        Your data will be saved locally for convenience.
+      </p>
+    </form>
+  </main>
+
+  <footer class="container footnote center">
+    <p>Educational use only • Always consult a doctor</p>
+  </footer>
+
+  <script>
+    // Persist inputs in localStorage
+    const form = document.getElementById("start-form");
+    const dateInput = document.getElementById("date-input");
+    const cycleInput = document.getElementById("cycle-input");
+    const langSel = document.getElementById("lang");
+    const unitSel = document.getElementById("unit");
+
+    // Load saved
+    window.addEventListener("load", () => {
+      dateInput.value = localStorage.getItem("preg_date") || "";
+      cycleInput.value = localStorage.getItem("preg_cycle") || "";
+      langSel.value = localStorage.getItem("preg_lang") || "en";
+      unitSel.value = localStorage.getItem("preg_unit") || "cm";
+    });
+
+    // Save on submit
+    form.addEventListener("submit", () => {
+      localStorage.setItem("preg_date", dateInput.value);
+      localStorage.setItem("preg_cycle", cycleInput.value);
+      localStorage.setItem("preg_lang", langSel.value);
+      localStorage.setItem("preg_unit", unitSel.value);
+    });
+
+    // Change label text
+    document.querySelectorAll('input[name="mode"]').forEach(r => {
+      r.addEventListener("change", () => {
+        document.getElementById("date-label").textContent =
+          r.value === "conception" ? "Conception date" : "LMP date";
+      });
+    });
+  </script>
+</body>
+</html>

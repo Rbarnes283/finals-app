@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Pregnancy Tracker • Development</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="pregnant.png" />
+</head>
+<body class="pink-bg">
+  <header class="container center">
+    <img src="pregnant.png" alt="Pregnant woman" class="logo-small" />
+    <h1>Baby Development</h1>
+    <nav class="breadcrumb">
+      <a href="index.html">← Start Over</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="summary" class="card">
+      <h2>Summary</h2>
+      <div class="summary-grid">
+        <div><div class="label">Mode</div><div id="summary-mode" class="value">—</div></div>
+        <div><div class="label">Date</div><div id="summary-date" class="value">—</div></div>
+        <div><div class="label">Due Date</div><div id="summary-edd" class="value">—</div></div>
+        <div><div class="label">Gestational Age</div><div id="summary-ga" class="value">—</div></div>
+      </div>
+      <button class="btn mt-1" id="share-btn">Share Link</button>
+      <button class="btn mt-1" id="print-btn">Print Summary</button>
+    </section>
+
+    <section id="current-week" class="card">
+      <h2>Current Week</h2>
+      <div id="current-week-content" class="stack"></div>
+    </section>
+
+    <section id="recommendations" class="card">
+      <h2>What Mom Can Do</h2>
+      <ul id="rec-list" class="bullets"></ul>
+    </section>
+
+    <section id="timeline" class="card">
+      <h2>Week-by-Week Overview</h2>
+      <div id="weeks-grid" class="weeks-grid"></div>
+    </section>
+  </main>
+
+  <footer class="container footnote center">
+    <p>Always verify with a healthcare provider for personalized care.</p>
+  </footer>
+
+  <script src="pregnancyData.js"></script>
+  <script src="script.js"></script>
+  <script>
+    renderDevelopmentPage();
+
+    // Add print button
+    document.getElementById("print-btn").addEventListener("click", () => {
+      window.print();
+    });
+
+    // Shareable link
+    document.getElementById("share-btn").addEventListener("click", () => {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url);
+      alert("Shareable link copied to clipboard!");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+:root {
+  --hot-pink: #ff1493;
+  --pink-900: #c10e73;
+  --pink-100: #ffe3f2;
+  --card-bg: #fff;
+  --text: #2b2b2b;
+  --muted: #5e5e5e;
+  --radius: 16px;
+  --shadow: 0 8px 22px rgba(0,0,0,0.12);
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: var(--text);
+}
+
+.pink-bg {
+  background: linear-gradient(180deg, var(--hot-pink), var(--pink-900));
+  min-height: 100vh;
+}
+
+.container { max-width: 1000px; margin: 0 auto; padding: 16px; }
+.center { text-align: center; }
+
+.hero-img {
+  width: 120px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
+}
+.logo-small { width: 70px; margin-bottom: 6px; }
+
+h1 { color: #fff; }
+.subtitle { color: #fff; opacity: .9; }
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.btn {
+  background: var(--hot-pink);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  margin-right: 6px;
+}
+.btn:hover { background: var(--pink-900); }
+
+.fieldset { border: 2px solid var(--pink-100); border-radius: 12px; padding: 10px; background: #fff; }
+.radio { display: block; color: var(--text); }
+.stack { display: flex; flex-direction: column; gap: 6px; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 640px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 10px; }
+.label { font-size: 0.85rem; color: var(--muted); }
+.value { font-weight: 700; }
+
+.weeks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+.week-card { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 8px; }
+.week-card.active { border-color: var(--hot-pink); box-shadow: 0 0 10px rgba(255,20,147,0.4); }
+
+.footnote { color: #fff; opacity: 0.9; font-size: 0.9rem; }
+.tiny { font-size: 0.8rem; color: var(--muted); }
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 14px; }
